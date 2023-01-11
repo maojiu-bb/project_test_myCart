@@ -58,7 +58,7 @@ export default {
   z-index: 9999;
 }
 .left {
-    flex: 1;
+    flex: 3;
     span {
         margin-left: 15px;
         line-height: 70px;
@@ -72,16 +72,15 @@ export default {
     }
 }
 .mid {
-    flex: 1;
+    flex: 4;
     span {
         line-height: 70px;
         font-size: 16px;
-        margin-left: 10px;
         color: red;
     }
 }
 .right {
-    flex: 1;
+    flex: 3;
     button {
         width: 80px;
         height: 40px;
