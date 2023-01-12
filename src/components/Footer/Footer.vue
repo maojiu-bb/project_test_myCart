@@ -82,7 +82,7 @@ export default {
 .right {
     flex: 3;
     button {
-        width: 80px;
+        width: 90px;
         height: 40px;
         margin-top: 15px;
         margin-left: 20px;

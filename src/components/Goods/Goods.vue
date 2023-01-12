@@ -16,20 +16,15 @@
         <!-- 商品的单价 -->
         <div class="unit-price">￥{{ price.toFixed(2) }}</div>
         <!-- 商品的数量模块 -->
-        <Counter :count="count" :id="id"></Counter>
+        <!-- 插槽 -->
+        <slot></slot>
     </div>
   </div>
   </div>
 </template>
 
 <script>
-// 导入 Counter 组件
-import Counter from '@/components/Counter/Counter.vue'
 export default {
-    // 注册组件
-    components: {
-        Counter
-    },
     // 自定义属性
     props: {
         // 商品的 id

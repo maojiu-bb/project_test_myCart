@@ -13,7 +13,10 @@
       :price="item.goods_price"
       :count="item.goods_count"
       @state-change="stateChange"
-    ></Goods>
+    >
+    <!-- 插槽 -->
+    <Counter :count="item.goods_count" @countChange="countChange(item , $event)"></Counter>
+    </Goods>
     <!-- Footer 底部区域 -->
     <Footer :fullCheck="isFullCheck" :amount="amount" :total="total" @check-all="checkAll"></Footer>
   </div>
@@ -22,8 +25,7 @@
 <script>
 // 导入 axios 模块
 import axios from "axios";
-// 导入 eventBus 模块
-import bus from '@/components/eventBus.js'
+import Counter from '@/components/Counter/Counter.vue'
 // 导入 Header 头部组件
 import Header from "@/components/Header/Header.vue";
 // 导入 Footer 底部组件
@@ -43,6 +45,7 @@ export default {
     Header,
     Footer,
     Goods,
+    Counter
   },
   // 计算属性
   computed: {
@@ -82,20 +85,14 @@ export default {
           return
         }
       })
+    },
+    countChange(item , val) {
+      item.goods_count = val
     }
   },
   created() {
     // 发起 Ajax 请求
-    this.initGoodsList();
-    // 接收数量的变化
-    bus.$on('shareCount' , val => {
-      this.list.some(item => {
-        if (item.id === val.id) {
-          item.goods_count = val.value
-          return
-        }
-      })
-    })
+    this.initGoodsList()
   },
 };
 </script>
